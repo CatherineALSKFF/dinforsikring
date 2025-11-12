@@ -327,6 +327,17 @@ export default function Home() {
               © 2025 dinforsikringshjelp.no • Juridisk enhet: Dinforsikringshjelp
               (ENK)
             </p>
+            <p className="text-center text-xs text-gray-400 mt-3">
+              Powered by{" "}
+              <a
+                href="https://lanuitech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-600 transition-colors duration-300"
+              >
+                Lanuit Tech LLC
+              </a>
+            </p>
           </div>
         </div>
       </footer>
