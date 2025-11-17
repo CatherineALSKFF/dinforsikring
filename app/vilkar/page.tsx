@@ -53,12 +53,14 @@ export default function Vilkar() {
               >
                 Vilkår
               </Link>
-              <Link
-                href="/#start"
+              <a
+                href="https://pci.jotform.com/form/253004702152038"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-[15px] bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-2.5 text-white font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 Start skjema
-              </Link>
+              </a>
             </nav>
           </div>
         </div>

@@ -53,12 +53,14 @@ export default function Home() {
               >
                 Vilkår
               </Link>
-              <Link
-                href="#start"
+              <a
+                href="https://pci.jotform.com/form/253004702152038"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-[15px] bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-2.5 text-white font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 Start skjema
-              </Link>
+              </a>
             </nav>
           </div>
         </div>
@@ -81,7 +83,9 @@ export default function Home() {
             </p>
             <div className="animate-on-scroll animate-delay-300 mt-12 flex justify-center gap-4">
               <a
-                href="#start"
+                href="https://pci.jotform.com/form/253004702152038"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
               >
                 Start forsikringsgjennomgang
@@ -228,7 +232,7 @@ export default function Home() {
                 <div className="mt-10">
                   <a
                     id="start"
-                    href="https://tally.so"
+                    href="https://pci.jotform.com/form/253004702152038"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-[15px] bg-white px-10 py-4 text-lg font-semibold text-blue-600 shadow-xl transition-all duration-300 hover:bg-blue-50 hover:shadow-2xl hover:scale-105"
@@ -296,7 +300,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="https://tally.so"
+                    href="https://pci.jotform.com/form/253004702152038"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
