@@ -68,10 +68,13 @@ export default function Personvern() {
         {/* Page Header */}
         <div className="animate-on-scroll mb-12">
           <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-            Personvernerklæring
+            Tjenesteavtale
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Sist oppdatert: 12. november 2025
+            Mellom Dinforsikringshjelp.no (org.nr. 933 424 766) og Kunden
+          </p>
+          <p className="mt-2 text-base text-gray-600">
+            Ved å sende inn skjemaet på Dinforsikringshjelp.no samtykker Kunden til vilkårene i denne avtalen.
           </p>
         </div>
 
@@ -79,165 +82,143 @@ export default function Personvern() {
         <div className="prose prose-blue max-w-none">
           <section className="animate-on-scroll mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              1. Innledning
+              §1 Formål
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Dinforsikringshjelp (ENK) er opptatt av å beskytte ditt personvern.
-              Denne personvernerklæringen forklarer hvordan vi samler inn,
-              bruker, deler og beskytter dine personopplysninger når du bruker
-              våre tjenester.
+              Dinforsikringshjelp.no tilbyr en uavhengig forsikringsgjennomgang for privatpersoner.
             </p>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Tjenesten består i å:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+              <li>Analysere kundens nåværende forsikringsavtaler</li>
+              <li>Innhente sammenlignbare tilbud fra utvalgte forsikringsselskaper og tredjepartstjenester (som Bytt.no, Tjenestetorget m.fl.)</li>
+              <li>Presentere resultatene og gi objektive anbefalinger</li>
+            </ul>
             <p className="text-gray-700 leading-relaxed">
-              Vi behandler personopplysninger i samsvar med gjeldende
-              personvernlovgivning, inkludert personopplysningsloven og
-              EUs personvernforordning (GDPR).
+              Formålet er å hjelpe kunden å oppnå bedre dekning, lavere pris eller mer gunstige vilkår.
             </p>
           </section>
 
           <section className="animate-on-scroll animate-delay-200 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              2. Hvilke opplysninger samler vi inn?
+              §2 Uavhengighet
             </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Vi samler inn følgende typer personopplysninger:
-            </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>
-                <strong>Kontaktinformasjon:</strong> Navn, e-postadresse, telefonnummer
-              </li>
-              <li>
-                <strong>Forsikringsinformasjon:</strong> Nåværende forsikringer,
-                dekningsgrad, premieinformasjon
-              </li>
-              <li>
-                <strong>Personlig informasjon:</strong> Fødselsdato, adresse, sivilstatus
-              </li>
-              <li>
-                <strong>Teknisk informasjon:</strong> IP-adresse, nettlesertype,
-                enhetsinformasjon, informasjonskapsler
-              </li>
+              <li>Dinforsikringshjelp.no mottar ingen provisjon fra forsikringsselskaper eller tredjepart.</li>
+              <li>Vederlaget betales direkte fra kunden for rådgivningstjenesten.</li>
+              <li>Alle råd gis på et uavhengig og objektivt grunnlag.</li>
             </ul>
           </section>
 
           <section className="animate-on-scroll animate-delay-300 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              3. Hvordan bruker vi opplysningene?
+              §3 Pris og betaling
             </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Vi bruker dine personopplysninger til følgende formål:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Å sammenligne forsikringstilbud fra ulike selskaper</li>
-              <li>Å gi deg personlige anbefalinger</li>
-              <li>Å kommunisere med deg om tjenesten vår</li>
-              <li>Å forbedre og utvikle våre tjenester</li>
-              <li>Å oppfylle juridiske forpliktelser</li>
+
+            <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+              Prisstruktur (inkl. mva):
+            </h3>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+              <li>1–2 produkter: 199 kr</li>
+              <li>3–5 produkter: 399 kr</li>
+              <li>6–8 produkter: 599 kr</li>
+              <li>9–11 produkter: 799 kr</li>
+              <li>11+ produkter: 999 kr</li>
             </ul>
+
+            <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+              Betaling:
+            </h3>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+              <li>Hele beløpet betales før gjennomgangen starter.</li>
+              <li>Betaling kan gjøres via Stripe, Vipps eller annen digital betalingsløsning oppgitt i skjemaet.</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+              Tilfredshetsgaranti og refusjon:
+            </h3>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Dinforsikringshjelp.no har en fornøyd-eller-pengene-tilbake-garanti.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Dersom Dinforsikringshjelp.no ikke finner noen bedre løsning eller økonomisk forbedring for kunden, refunderes hele beløpet.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Refusjon gjelder dersom:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+              <li>Kunden selv oppgir at de ikke har mottatt et bedre tilbud eller verdiøkning</li>
+              <li>Dinforsikringshjelp.no gjennomgår og bekrefter dette etter kontroll</li>
+            </ul>
+            <p className="text-gray-700 leading-relaxed">
+              Refusjon behandles normalt innen 5–10 virkedager etter bekreftelse.
+            </p>
           </section>
 
           <section className="animate-on-scroll animate-delay-400 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              4. Deling av opplysninger
+              §4 Samtykke og innhenting av tilbud
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Vi kan dele dine personopplysninger med:
+              Kunden samtykker til at Dinforsikringshjelp.no kan:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>
-                <strong>Forsikringsselskaper:</strong> For å hente inn tilbud på
-                dine vegne
-              </li>
-              <li>
-                <strong>Tjenesteleverandører:</strong> Som hjelper oss med å
-                levere tjenesten (f.eks. IT-systemer, datalagring)
-              </li>
-              <li>
-                <strong>Offentlige myndigheter:</strong> Når vi er lovpålagt til det
-              </li>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+              <li>Innhente og sammenligne forsikringstilbud på kundens vegne fra forsikringsselskaper og tredjepartsleverandører (inkl. Bytt.no, Tjenestetorget, Finansportalen m.fl.)</li>
+              <li>Samle inn og bruke informasjon som kunden selv oppgir, herunder forsikringsavtaler, premie, vilkår og selskapstilhørighet</li>
+              <li>Foreta kredittsjekk der dette kreves av forsikringsselskapene for å innhente reelle tilbud</li>
+              <li>Kontakte kunden via telefon, SMS eller e-post i forbindelse med innhenting, rådgivning og oppfølging</li>
             </ul>
-            <p className="text-gray-700 leading-relaxed mt-4">
-              Vi selger aldri dine personopplysninger til tredjeparter.
+            <p className="text-gray-700 leading-relaxed">
+              Samtykket gjelder inntil det trekkes tilbake skriftlig.
             </p>
           </section>
 
           <section className="animate-on-scroll animate-delay-500 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              5. Informasjonskapsler (Cookies)
+              §5 Ansvarsbegrensning
             </h2>
-            <p className="text-gray-700 leading-relaxed">
-              Vi bruker informasjonskapsler for å forbedre brukeropplevelsen og
-              analysere hvordan nettstedet vårt brukes. Du kan når som helst
-              endre innstillingene for informasjonskapsler i nettleseren din.
-            </p>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Dinforsikringshjelp.no garanterer ikke for fremtidige priser, vilkår eller rabatter hos forsikringsselskaper.</li>
+              <li>Kunden står selv ansvarlig for valg av forsikringsselskap og eventuelle avtaleinngåelser.</li>
+              <li>Tjenesten er en uavhengig rådgivningstjeneste og ikke finansrådgivning etter finansforetaksloven.</li>
+            </ul>
           </section>
 
           <section className="animate-on-scroll animate-delay-600 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              6. Dine rettigheter
+              §6 Oppsigelse
             </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Du har følgende rettigheter knyttet til dine personopplysninger:
-            </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>
-                <strong>Rett til innsyn:</strong> Du kan be om innsyn i hvilke
-                opplysninger vi har om deg
-              </li>
-              <li>
-                <strong>Rett til retting:</strong> Du kan be om å få rettet
-                uriktige opplysninger
-              </li>
-              <li>
-                <strong>Rett til sletting:</strong> Du kan be om å få slettet
-                dine opplysninger
-              </li>
-              <li>
-                <strong>Rett til begrensning:</strong> Du kan be om å begrense
-                behandlingen av dine opplysninger
-              </li>
-              <li>
-                <strong>Rett til dataportabilitet:</strong> Du kan be om å få
-                utlevert dine opplysninger i et maskinlesbart format
-              </li>
-              <li>
-                <strong>Rett til å protestere:</strong> Du kan protestere mot
-                behandling av dine opplysninger
-              </li>
+              <li>Avtalen kan sies opp skriftlig av begge parter før arbeidet påbegynnes.</li>
+              <li>Etter oppstart gjelder vilkårene i §3, med rett til refusjon dersom ingen forbedring kan dokumenteres.</li>
             </ul>
           </section>
 
           <section className="animate-on-scroll animate-delay-700 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              7. Lagring av opplysninger
+              §7 Konfidensialitet
             </h2>
-            <p className="text-gray-700 leading-relaxed">
-              Vi lagrer dine personopplysninger så lenge det er nødvendig for å
-              oppfylle formålene beskrevet i denne personvernerklæringen, eller
-              så lenge det er påkrevd av lov. Når opplysningene ikke lenger er
-              nødvendige, vil de bli slettet eller anonymisert.
-            </p>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <li>All informasjon kunden oppgir behandles strengt konfidensielt og deles kun med relevante aktører som er nødvendige for å gjennomføre sammenligningen.</li>
+              <li>Ingen informasjon brukes til markedsføring uten kundens samtykke.</li>
+            </ul>
           </section>
 
           <section className="animate-on-scroll animate-delay-800 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              8. Sikkerhet
+              §8 Tvister
             </h2>
-            <p className="text-gray-700 leading-relaxed">
-              Vi bruker tekniske og organisatoriske sikkerhetstiltak for å
-              beskytte dine personopplysninger mot uautorisert tilgang, endring,
-              avsløring eller ødeleggelse. Ingen system er imidlertid helt
-              sikre, og vi kan ikke garantere absolutt sikkerhet.
-            </p>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Eventuelle tvister søkes løst i minnelighet.</li>
+              <li>Dersom partene ikke oppnår enighet, skal saken behandles etter norsk lov med Oslo tingrett som verneting.</li>
+            </ul>
           </section>
 
           <section className="animate-on-scroll animate-delay-900 mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              9. Kontakt oss
+              Kontakt
             </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Hvis du har spørsmål om denne personvernerklæringen eller vil
-              utøve dine rettigheter, kan du kontakte oss:
-            </p>
             <div className="bg-blue-50 rounded-[15px] p-6">
               <p className="text-gray-700 mb-2">
                 <strong>E-post:</strong>{" "}
@@ -249,20 +230,9 @@ export default function Personvern() {
                 </a>
               </p>
               <p className="text-gray-700">
-                <strong>Juridisk enhet:</strong> Dinforsikringshjelp (ENK)
+                <strong>Organisasjonsnummer:</strong> 933 424 766
               </p>
             </div>
-          </section>
-
-          <section className="animate-on-scroll animate-delay-1000">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              10. Endringer i personvernerklæringen
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              Vi kan oppdatere denne personvernerklæringen fra tid til annen.
-              Vi vil informere deg om eventuelle vesentlige endringer ved å
-              publisere den oppdaterte versjonen på nettstedet vårt.
-            </p>
           </section>
         </div>
 
@@ -346,8 +316,7 @@ export default function Personvern() {
 
           <div className="mt-12 border-t border-blue-100 pt-8">
             <p className="text-center text-sm text-gray-500">
-              © 2025 dinforsikringshjelp.no • Juridisk enhet: Dinforsikringshjelp
-              (ENK)
+              © 2025 dinforsikringshjelp.no • Organisasjonsnummer: 933 424 766
             </p>
             <p className="text-center text-xs text-gray-400 mt-3">
               Powered by{" "}
