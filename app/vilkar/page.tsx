@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import Navbar from "../components/Navbar";
 
 export default function Vilkar() {
   useEffect(() => {
@@ -28,43 +29,7 @@ export default function Vilkar() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-blue-100 bg-white/90 backdrop-blur-md shadow-sm">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-[15px] bg-gradient-to-br from-blue-600 to-blue-400 text-white font-bold text-xl shadow-lg">
-                D
-              </div>
-              <span className="ml-3 text-xl font-semibold text-gray-900">
-                dinforsikringshjelp.no
-              </span>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link
-                href="/personvern"
-                className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
-              >
-                Personvern
-              </Link>
-              <Link
-                href="/vilkar"
-                className="text-blue-600 font-semibold transition-colors duration-300"
-              >
-                Vilkår
-              </Link>
-              <a
-                href="https://pci.jotform.com/form/253004702152038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-[15px] bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-2.5 text-white font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                Start skjema
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Page Header */}
