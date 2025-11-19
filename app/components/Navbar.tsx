@@ -11,18 +11,18 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-blue-100 bg-white/90 backdrop-blur-md shadow-sm">
       <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center animate-fade-in animate-delay-100">
-            <div className="relative h-10 w-10 rounded-[15px] overflow-hidden shadow-lg">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 animate-fade-in animate-delay-100">
+            <div className="relative h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 flex-shrink-0 overflow-hidden">
               <Image
-                src="/logo.jpeg"
+                src="/logo-forsikring.jpeg"
                 alt="dinforsikringshjelp.no logo"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
             </div>
-            <span className="ml-3 text-lg sm:text-xl font-semibold text-gray-900">
-              dinforsikringshjelp.no
+            <span className="text-sm sm:text-base lg:text-xl font-bold text-gray-800 whitespace-nowrap">
+              DinForsikringsHjelp.no
             </span>
           </Link>
 

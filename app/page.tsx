@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 
@@ -229,12 +230,17 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
             <div className="animate-on-scroll">
-              <div className="flex items-center mb-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-[15px] bg-gradient-to-br from-blue-600 to-blue-400 text-white font-bold text-lg shadow-lg">
-                  D
+              <div className="flex items-center gap-3 mb-5">
+                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden">
+                  <Image
+                    src="/logo-forsikring.jpeg"
+                    alt="dinforsikringshjelp.no logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
-                <span className="ml-3 text-lg font-semibold text-gray-900">
-                  dinforsikringshjelp.no
+                <span className="text-lg font-bold text-gray-800">
+                  DinForsikringsHjelp.no
                 </span>
               </div>
               <p className="text-sm text-gray-600 leading-relaxed">
