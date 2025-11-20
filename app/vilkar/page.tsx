@@ -248,7 +248,7 @@ export default function Vilkar() {
         <div className="mt-16 text-center">
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
+            className="inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
           >
             Tilbake til forsiden
           </Link>
