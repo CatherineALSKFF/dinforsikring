@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
+  const [isGuaranteeExpanded, setIsGuaranteeExpanded] = useState(false);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -52,7 +54,7 @@ export default function Home() {
                 href="https://pci.jotform.com/form/253004702152038"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                className="group inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
               >
                 Start forsikringsgjennomgang
                 <svg
@@ -69,6 +71,85 @@ export default function Home() {
                   />
                 </svg>
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Money-Back Guarantee Section */}
+        <section className="px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-white">
+          <div className="mx-auto max-w-4xl">
+            <div className="animate-on-scroll bg-white rounded-[20px] shadow-xl border border-blue-100 overflow-hidden">
+              <div className="p-8 sm:p-12">
+                <div className="flex items-center justify-center mb-6">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
+                  Pengene-tilbake-garanti
+                </h2>
+                <p className="text-center text-gray-600 text-lg mb-6">
+                  Vi ønsker at dette skal være helt trygt for deg. Derfor har vi en enkel garanti:
+                </p>
+
+                <div className={`transition-all duration-500 ease-in-out ${isGuaranteeExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                  <div className="bg-gradient-to-br from-blue-50 via-blue-50/50 to-sky-100/60 rounded-[15px] p-6 sm:p-8 mb-6">
+                    <p className="text-gray-700 leading-relaxed mb-4">
+                      <strong className="text-gray-900">Finner vi ikke en bedre forsikringsavtale enn du har i dag – får du hele beløpet tilbake.</strong>
+                    </p>
+                    <p className="text-gray-700 leading-relaxed mb-6">
+                      Du betaler altså kun dersom vi klarer å skaffe deg en bedre pris eller bedre dekning. Dette sikrer at du ikke tar noen risiko, og at du kun betaler for faktisk verdi.
+                    </p>
+
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">Slik fungerer det:</h3>
+                    <ol className="space-y-3 mb-6">
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">1</span>
+                        <span className="text-gray-700">Du sender oss dine nåværende forsikringer.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">2</span>
+                        <span className="text-gray-700">Vi henter inn tilbud fra flere selskaper og setter det opp i en tydelig sammenligning.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">3</span>
+                        <span className="text-gray-700">Dersom vi finner en løsning som er bedre for deg → du betaler for tjenesten.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">4</span>
+                        <span className="text-gray-700">Hvis ikke → vi refunderer hele beløpet, uten spørsmål.</span>
+                      </li>
+                    </ol>
+
+                    <div className="bg-white rounded-[15px] p-6 shadow-md">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Kort fortalt:</h4>
+                      <p className="text-xl font-bold text-blue-600">Ingen besparelse = ingen kostnad.</p>
+                      <p className="text-gray-700 mt-3 leading-relaxed">
+                        Dette gjør tjenesten vår helt risikofri for deg, og sikrer at du kun betaler når du faktisk får en bedre avtale.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => setIsGuaranteeExpanded(!isGuaranteeExpanded)}
+                    className="group inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                  >
+                    {isGuaranteeExpanded ? 'Vis mindre' : 'Les mer'}
+                    <svg
+                      className={`ml-2 h-5 w-5 transition-transform duration-300 ${isGuaranteeExpanded ? 'rotate-180' : ''}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -185,7 +266,7 @@ export default function Home() {
         {/* Reassuring CTA Section */}
         <section className="px-4 py-24 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-white">
           <div className="mx-auto max-w-5xl">
-            <div className="animate-on-scroll rounded-[15px] bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-20 text-center shadow-2xl sm:px-16 relative overflow-hidden">
+            <div className="animate-on-scroll rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-20 text-center shadow-2xl sm:px-16 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
               <div className="relative">
                 <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
