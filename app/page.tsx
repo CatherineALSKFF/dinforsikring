@@ -154,6 +154,92 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Pricing Section */}
+        <section className="px-4 py-16 sm:px-6 lg:px-8 bg-white">
+          <div className="mx-auto max-w-5xl">
+            <div className="animate-on-scroll text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+                Priser
+              </h2>
+              <p className="mt-4 text-lg text-gray-600">
+                Enkle og forutsigbare priser basert på antall forsikringer
+              </p>
+            </div>
+
+            <div className="animate-on-scroll animate-delay-200 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {/* Pricing Card 1 */}
+              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="mb-4">
+                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">1-2 forsikringer</div>
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-bold text-gray-900">199</span>
+                    <span className="ml-2 text-gray-600">kr</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pricing Card 2 */}
+              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="mb-4">
+                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">3-5 forsikringer</div>
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-bold text-gray-900">399</span>
+                    <span className="ml-2 text-gray-600">kr</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pricing Card 3 */}
+              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="mb-4">
+                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">6-8 forsikringer</div>
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-bold text-gray-900">599</span>
+                    <span className="ml-2 text-gray-600">kr</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pricing Card 4 */}
+              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="mb-4">
+                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">9-11 forsikringer</div>
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-bold text-gray-900">799</span>
+                    <span className="ml-2 text-gray-600">kr</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pricing Card 5 */}
+              <div className="group relative overflow-hidden rounded-[15px] border-2 border-blue-400 bg-gradient-to-br from-blue-50 to-blue-100/50 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 md:col-span-2 lg:col-span-1">
+                <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-[10px]">
+                  POPULÆRT
+                </div>
+                <div className="mb-4 mt-2">
+                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">12+ forsikringer</div>
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-bold text-gray-900">999</span>
+                    <span className="ml-2 text-gray-600">kr</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Delivery Time Notice */}
+            <div className="animate-on-scroll animate-delay-300 mt-10 text-center">
+              <div className="inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-50 to-sky-100/60 px-6 py-4 shadow-sm border border-blue-200">
+                <svg className="h-5 w-5 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-gray-700 font-medium">
+                  Tjenesten leveres digitalt innen 24–48 timer.
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 3-Step Process Section */}
         <section className="px-4 py-24 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50/30">
           <div className="mx-auto max-w-7xl">
@@ -324,9 +410,21 @@ export default function Home() {
                   DinForsikringsHjelp.no
                 </span>
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed mb-4">
                 Uavhengig forsikringssammenligning for privatpersoner i Norge.
               </p>
+              <div className="space-y-2 text-sm text-gray-600">
+                <p className="font-semibold text-gray-800">Dinforsikringshjelp (ENK)</p>
+                <p>Org.nr: 933 424 766</p>
+                <p>
+                  <a
+                    href="mailto:kontakt@dinforsikringshjelp.no"
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
+                    E-post: kontakt@dinforsikringshjelp.no
+                  </a>
+                </p>
+              </div>
             </div>
 
             <div className="animate-on-scroll animate-delay-200">
@@ -336,18 +434,26 @@ export default function Home() {
               <ul className="space-y-3">
                 <li>
                   <Link
-                    href="/personvern"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                  >
-                    Personvern
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href="/vilkar"
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
                   >
                     Vilkår
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/salgsvilkar"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                  >
+                    Salgs- og kjøpsvilkår
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/personvern"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                  >
+                    Personvern
                   </Link>
                 </li>
                 <li>

@@ -1,210 +1,194 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 export default function Personvern() {
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("animate-on-scroll");
-          entry.target.classList.add("animate-fade-in-up");
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       <Navbar />
 
       <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-        {/* Page Header */}
-        <div className="animate-on-scroll mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-            Tjenesteavtale
+        <div className="rounded-[20px] bg-white shadow-xl border border-blue-100 p-8 sm:p-12">
+          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-8">
+            Personvernerklæring
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
-            Mellom Dinforsikringshjelp.no (org.nr. 933 424 766) og Kunden
-          </p>
-          <p className="mt-2 text-base text-gray-600">
-            Ved å sende inn skjemaet på Dinforsikringshjelp.no samtykker Kunden til vilkårene i denne avtalen.
-          </p>
-        </div>
+          <p className="text-sm text-gray-500 mb-8">Dinforsikringshjelp.no</p>
 
-        {/* Content */}
-        <div className="prose prose-blue max-w-none">
-          <section className="animate-on-scroll mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §1 Formål
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Dinforsikringshjelp.no tilbyr en uavhengig forsikringsgjennomgang for privatpersoner.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Tjenesten består i å:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
-              <li>Analysere kundens nåværende forsikringsavtaler</li>
-              <li>Innhente sammenlignbare tilbud fra utvalgte forsikringsselskaper og tredjepartstjenester (som Bytt.no, Tjenestetorget m.fl.)</li>
-              <li>Presentere resultatene og gi objektive anbefalinger</li>
-            </ul>
-            <p className="text-gray-700 leading-relaxed">
-              Formålet er å hjelpe kunden å oppnå bedre dekning, lavere pris eller mer gunstige vilkår.
-            </p>
+          {/* Behandlingsansvarlig */}
+          <section className="mb-8 bg-blue-50 rounded-[15px] p-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Behandlingsansvarlig:</h2>
+            <div className="text-gray-700 space-y-1">
+              <p><strong>Dinforsikringshjelp (ENK)</strong></p>
+              <p>Org.nr: 933 424 766</p>
+              <p>E-post: <a href="mailto:kontakt@dinforsikringshjelp.no" className="text-blue-600 hover:text-blue-700 transition-colors">kontakt@dinforsikringshjelp.no</a></p>
+            </div>
           </section>
 
-          <section className="animate-on-scroll animate-delay-200 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §2 Uavhengighet
-            </h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Dinforsikringshjelp.no mottar ingen provisjon fra forsikringsselskaper eller tredjepart.</li>
-              <li>Vederlaget betales direkte fra kunden for rådgivningstjenesten.</li>
-              <li>Alle råd gis på et uavhengig og objektivt grunnlag.</li>
-            </ul>
-          </section>
+          <div className="border-t border-gray-200 my-8"></div>
 
-          <section className="animate-on-scroll animate-delay-300 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §3 Pris og betaling
-            </h2>
-
-            <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
-              Prisstruktur (inkl. mva):
-            </h3>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
-              <li>1–2 produkter: 199 kr</li>
-              <li>3–5 produkter: 399 kr</li>
-              <li>6–8 produkter: 599 kr</li>
-              <li>9–11 produkter: 799 kr</li>
-              <li>11+ produkter: 999 kr</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
-              Betaling:
-            </h3>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
-              <li>Hele beløpet betales før gjennomgangen starter.</li>
-              <li>Betaling kan gjøres via Stripe, Vipps eller annen digital betalingsløsning oppgitt i skjemaet.</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
-              Tilfredshetsgaranti og refusjon:
-            </h3>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Dinforsikringshjelp.no har en fornøyd-eller-pengene-tilbake-garanti.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Dersom Dinforsikringshjelp.no ikke finner noen bedre løsning eller økonomisk forbedring for kunden, refunderes hele beløpet.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Refusjon gjelder dersom:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
-              <li>Kunden selv oppgir at de ikke har mottatt et bedre tilbud eller verdiøkning</li>
-              <li>Dinforsikringshjelp.no gjennomgår og bekrefter dette etter kontroll</li>
-            </ul>
-            <p className="text-gray-700 leading-relaxed">
-              Refusjon behandles normalt innen 5–10 virkedager etter bekreftelse.
-            </p>
-          </section>
-
-          <section className="animate-on-scroll animate-delay-400 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §4 Samtykke og innhenting av tilbud
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Kunden samtykker til at Dinforsikringshjelp.no kan:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
-              <li>Innhente og sammenligne forsikringstilbud på kundens vegne fra forsikringsselskaper og tredjepartsleverandører (inkl. Bytt.no, Tjenestetorget, Finansportalen m.fl.)</li>
-              <li>Samle inn og bruke informasjon som kunden selv oppgir, herunder forsikringsavtaler, premie, vilkår og selskapstilhørighet</li>
-              <li>Foreta kredittsjekk der dette kreves av forsikringsselskapene for å innhente reelle tilbud</li>
-              <li>Kontakte kunden via telefon, SMS eller e-post i forbindelse med innhenting, rådgivning og oppfølging</li>
-            </ul>
-            <p className="text-gray-700 leading-relaxed">
-              Samtykket gjelder inntil det trekkes tilbake skriftlig.
-            </p>
-          </section>
-
-          <section className="animate-on-scroll animate-delay-500 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §5 Ansvarsbegrensning
-            </h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Dinforsikringshjelp.no garanterer ikke for fremtidige priser, vilkår eller rabatter hos forsikringsselskaper.</li>
-              <li>Kunden står selv ansvarlig for valg av forsikringsselskap og eventuelle avtaleinngåelser.</li>
-              <li>Tjenesten er en uavhengig rådgivningstjeneste og ikke finansrådgivning etter finansforetaksloven.</li>
-            </ul>
-          </section>
-
-          <section className="animate-on-scroll animate-delay-600 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §6 Oppsigelse
-            </h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Avtalen kan sies opp skriftlig av begge parter før arbeidet påbegynnes.</li>
-              <li>Etter oppstart gjelder vilkårene i §3, med rett til refusjon dersom ingen forbedring kan dokumenteres.</li>
-            </ul>
-          </section>
-
-          <section className="animate-on-scroll animate-delay-700 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §7 Konfidensialitet
-            </h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>All informasjon kunden oppgir behandles strengt konfidensielt og deles kun med relevante aktører som er nødvendige for å gjennomføre sammenligningen.</li>
-              <li>Ingen informasjon brukes til markedsføring uten kundens samtykke.</li>
-            </ul>
-          </section>
-
-          <section className="animate-on-scroll animate-delay-800 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              §8 Tvister
-            </h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Eventuelle tvister søkes løst i minnelighet.</li>
-              <li>Dersom partene ikke oppnår enighet, skal saken behandles etter norsk lov med Oslo tingrett som verneting.</li>
-            </ul>
-          </section>
-
-          <section className="animate-on-scroll animate-delay-900 mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Kontakt
-            </h2>
-            <div className="bg-blue-50 rounded-[15px] p-6">
-              <p className="text-gray-700 mb-2">
-                <strong>E-post:</strong>{" "}
-                <a
-                  href="mailto:kontakt@dinforsikringshjelp.no"
-                  className="text-blue-600 hover:text-blue-700 transition-colors"
-                >
-                  kontakt@dinforsikringshjelp.no
-                </a>
+          {/* Formål */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Formål</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>
+                Vi behandler personopplysninger for å kunne innhente og sammenstille forsikringstilbud på vegne av kunden, samt levere den tjenesten kunden bestiller.
               </p>
-              <p className="text-gray-700">
-                <strong>Organisasjonsnummer:</strong> 933 424 766
+              <p>
+                Dinforsikringshjelp.no gir ikke forsikringsrådgivning og vurderer ikke hvilke produkter kunden bør velge.
               </p>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Hvilke opplysninger */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Hvilke opplysninger vi behandler</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>Vi behandler følgende kategorier av personopplysninger:</p>
+              <ul className="list-disc ml-6 space-y-2">
+                <li>Navn og kontaktinformasjon (e-postadresse, evt. telefon hvis oppgitt)</li>
+                <li>Opplysninger kunden oppgir om sine eksisterende forsikringer (f.eks. selskap, premie, vilkår, dekninger, antall produkter)</li>
+                <li>Informasjon og tilbud som innhentes fra forsikringsselskaper og tredjepartsaktører</li>
+                <li>Interne driftsnotater som er nødvendige for å utføre tjenesten</li>
+              </ul>
+              <p className="font-semibold text-gray-900 mt-4">
+                Vi behandler ikke sensitive personopplysninger.
+              </p>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Rettslig grunnlag */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Rettslig grunnlag</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>Behandlingen av personopplysninger skjer på følgende grunnlag:</p>
+              <div className="bg-blue-50 rounded-[15px] p-4 my-3">
+                <p className="font-semibold text-gray-900 mb-2">Samtykke, jf. GDPR artikkel 6(1)(a).</p>
+                <p>Kunden gir samtykke ved å sende inn skjema på Dinforsikringshjelp.no.</p>
+              </div>
+              <p className="font-semibold text-gray-900">
+                Samtykket kan når som helst trekkes tilbake ved å kontakte oss skriftlig.
+              </p>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Lagring og sletting */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Lagring og sletting</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>
+                Personopplysninger lagres sikkert i tilgangsstyrte og krypterte systemer (Google Workspace og Notion).
+              </p>
+              <p>
+                Vi lagrer opplysningene i inntil <strong>12 måneder</strong> etter at tjenesten er fullført, med mindre lengre lagring følger av lov eller særskilt avtale.
+              </p>
+              <p>
+                Ved forespørsel kan data slettes tidligere.
+              </p>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Deling av informasjon */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Deling av informasjon</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>Vi deler kun personopplysninger med aktører som er nødvendige for å innhente tilbud og levere tjenesten:</p>
+              <ul className="list-disc ml-6 space-y-2">
+                <li>Forsikringsselskaper</li>
+                <li>Tredjeparts sammenligningstjenester (Bytt.no, Tjenestetorget, Finansportalen m.fl.)</li>
+                <li>Tekniske tjenesteleverandører som brukes for drift av løsningen (f.eks. Jotform, e-postsystemer)</li>
+              </ul>
+
+              <div className="bg-green-50 border border-green-200 rounded-[15px] p-4 my-4">
+                <p className="font-semibold text-gray-900 mb-2">Vi:</p>
+                <ul className="list-disc ml-6 space-y-1">
+                  <li>selger aldri personopplysninger</li>
+                  <li>deler ikke data til markedsføring uten kundens uttrykkelige samtykke</li>
+                  <li>begrenser deling til det som er nødvendig for tjenesten</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Dine rettigheter */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Dine rettigheter</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>Som kunde har du rett til å:</p>
+              <ul className="list-disc ml-6 space-y-2">
+                <li>Be om innsyn i hvilke opplysninger vi har lagret</li>
+                <li>Be om retting av feil eller mangelfulle opplysninger</li>
+                <li>Be om sletting av dine data</li>
+                <li>Be om kopi av dine data (dataportabilitet)</li>
+                <li>Trekke tilbake samtykke når som helst</li>
+              </ul>
+              <p className="mt-4">
+                Forespørsler sendes til <a href="mailto:kontakt@dinforsikringshjelp.no" className="text-blue-600 hover:text-blue-700 transition-colors font-semibold">kontakt@dinforsikringshjelp.no</a>.
+              </p>
+              <p>
+                Vi svarer innen <strong>30 dager</strong>.
+              </p>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Sikkerhet */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Sikkerhet</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>
+                Vi benytter sikre og krypterte lagringsløsninger, samt rutiner for tilgangsstyring.
+              </p>
+              <p>Dette beskytter personopplysningene mot:</p>
+              <ul className="list-disc ml-6 space-y-2">
+                <li>uautorisert tilgang</li>
+                <li>endring</li>
+                <li>tap</li>
+                <li>misbruk</li>
+              </ul>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Endringer */}
+          <section className="mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Endringer i personvernerklæringen</h2>
+            <div className="text-gray-700 leading-relaxed space-y-3">
+              <p>
+                Personvernerklæringen kan oppdateres ved behov.
+              </p>
+              <p>
+                <strong>Siste oppdatering:</strong> november 2025.
+              </p>
+            </div>
+          </section>
+
+          <div className="border-t border-gray-200 my-8"></div>
+
+          {/* Kontaktinformasjon */}
+          <section className="bg-blue-50 rounded-[15px] p-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Kontaktinformasjon</h2>
+            <div className="text-gray-700 space-y-1">
+              <p><strong>Dinforsikringshjelp.no</strong></p>
+              <p>E-post: <a href="mailto:kontakt@dinforsikringshjelp.no" className="text-blue-600 hover:text-blue-700 transition-colors">kontakt@dinforsikringshjelp.no</a></p>
+              <p>Nettside: <a href="https://www.dinforsikringshjelp.no" className="text-blue-600 hover:text-blue-700 transition-colors">www.dinforsikringshjelp.no</a></p>
             </div>
           </section>
         </div>
 
-        {/* Back to Home Button */}
-        <div className="mt-16 text-center">
+        <div className="mt-8 text-center">
           <Link
             href="/"
             className="inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
@@ -227,9 +211,21 @@ export default function Personvern() {
                   dinforsikringshjelp.no
                 </span>
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed mb-4">
                 Uavhengig forsikringssammenligning for privatpersoner i Norge.
               </p>
+              <div className="space-y-2 text-sm text-gray-600">
+                <p className="font-semibold text-gray-800">Dinforsikringshjelp (ENK)</p>
+                <p>Org.nr: 933 424 766</p>
+                <p>
+                  <a
+                    href="mailto:kontakt@dinforsikringshjelp.no"
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
+                    E-post: kontakt@dinforsikringshjelp.no
+                  </a>
+                </p>
+              </div>
             </div>
 
             <div>
@@ -239,14 +235,6 @@ export default function Personvern() {
               <ul className="space-y-3">
                 <li>
                   <Link
-                    href="/personvern"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                  >
-                    Personvern
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href="/vilkar"
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
                   >
@@ -254,8 +242,24 @@ export default function Personvern() {
                   </Link>
                 </li>
                 <li>
+                  <Link
+                    href="/salgsvilkar"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                  >
+                    Salgs- og kjøpsvilkår
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/personvern"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                  >
+                    Personvern
+                  </Link>
+                </li>
+                <li>
                   <a
-                    href="https://tally.so"
+                    href="https://pci.jotform.com/form/253004702152038"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
@@ -283,7 +287,8 @@ export default function Personvern() {
 
           <div className="mt-12 border-t border-blue-100 pt-8">
             <p className="text-center text-sm text-gray-500">
-              © 2025 dinforsikringshjelp.no • Organisasjonsnummer: 933 424 766
+              © 2025 dinforsikringshjelp.no • Juridisk enhet: Dinforsikringshjelp
+              (ENK)
             </p>
             <p className="text-center text-xs text-gray-400 mt-3">
               Powered by{" "}
@@ -293,7 +298,7 @@ export default function Personvern() {
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-600 transition-colors duration-300"
               >
-                Lanui Tech
+                Lanuit Tech LLC
               </a>
             </p>
           </div>
