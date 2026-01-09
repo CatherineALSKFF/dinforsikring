@@ -32,9 +32,19 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      {/* Fixed background decoration layer */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="bg-splash" style={{ width: '400px', height: '400px', top: '5%', right: '10%' }}></div>
+        <div className="bg-splash" style={{ width: '350px', height: '350px', top: '30%', left: '5%' }}></div>
+        <div className="bg-splash" style={{ width: '300px', height: '300px', top: '50%', right: '15%' }}></div>
+        <div className="bg-splash" style={{ width: '320px', height: '320px', top: '70%', left: '10%' }}></div>
+        <div className="bg-splash" style={{ width: '280px', height: '280px', top: '85%', right: '8%' }}></div>
+        <div className="bg-splash" style={{ width: '250px', height: '250px', top: '15%', left: '50%' }}></div>
+      </div>
+
       <Navbar />
 
-      <main>
+      <main className="relative z-10">
         {/* Hero Section */}
         <section className="relative overflow-hidden px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent pointer-events-none"></div>
@@ -76,7 +86,7 @@ export default function Home() {
         </section>
 
         {/* Money-Back Guarantee Section */}
-        <section className="px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-white">
+        <section className="relative px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-white">
           <div className="mx-auto max-w-4xl">
             <div className="animate-on-scroll bg-white rounded-[20px] shadow-xl border border-blue-100 overflow-hidden">
               <div className="p-8 sm:p-12">
@@ -155,7 +165,7 @@ export default function Home() {
         </section>
 
         {/* Pricing Section */}
-        <section className="px-4 py-16 sm:px-6 lg:px-8 bg-white">
+        <section className="relative px-4 py-16 sm:px-6 lg:px-8 bg-white">
           <div className="mx-auto max-w-5xl">
             <div className="animate-on-scroll text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
