@@ -2,434 +2,341 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ArrowRight, FileText, GitCompare, BadgeCheck } from "lucide-react";
 import Navbar from "./components/Navbar";
+import ShaderBackground from "./components/ShaderBackground";
+import RollButton from "./components/RollButton";
+import SectionBadge from "./components/SectionBadge";
+import SavingsCard from "./components/SavingsCard";
+import CategoryStrip from "./components/CategoryStrip";
+import PriceScale from "./components/PriceScale";
+import Reveal from "./components/Reveal";
+
+const FORM_URL = "https://pci.jotform.com/form/253004702152038";
+
+
+const STEPS = [
+  {
+    n: "01",
+    Icon: FileText,
+    title: "Send inn skjemaet",
+    body: "2 til 3 minutter, kun det viktigste. Vi trenger bare grunnleggende informasjon for å komme i gang.",
+  },
+  {
+    n: "02",
+    Icon: GitCompare,
+    title: "Vi sammenligner",
+    body: "Vi henter og sammenligner tilbud for deg fra ulike forsikringsselskaper.",
+  },
+  {
+    n: "03",
+    Icon: BadgeCheck,
+    title: "Du velger",
+    body: "Se pris og vilkår side ved side, og velg det som passer deg best.",
+  },
+];
+
+const GUARANTEE_STEPS = [
+  "Du sender oss dine nåværende forsikringer.",
+  "Vi henter inn tilbud fra flere selskaper og setter det opp i en tydelig sammenligning.",
+  "Dersom vi finner en løsning som er bedre for deg → du betaler for tjenesten.",
+  "Hvis ikke → vi refunderer hele beløpet, uten spørsmål.",
+];
 
 export default function Home() {
   const [isGuaranteeExpanded, setIsGuaranteeExpanded] = useState(false);
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("animate-on-scroll");
-          entry.target.classList.add("animate-fade-in-up");
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-      {/* Fixed background decoration layer */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="bg-splash" style={{ width: '400px', height: '400px', top: '5%', right: '10%' }}></div>
-        <div className="bg-splash" style={{ width: '350px', height: '350px', top: '30%', left: '5%' }}></div>
-        <div className="bg-splash" style={{ width: '300px', height: '300px', top: '50%', right: '15%' }}></div>
-        <div className="bg-splash" style={{ width: '320px', height: '320px', top: '70%', left: '10%' }}></div>
-        <div className="bg-splash" style={{ width: '280px', height: '280px', top: '85%', right: '8%' }}></div>
-        <div className="bg-splash" style={{ width: '250px', height: '250px', top: '15%', left: '50%' }}></div>
-      </div>
+    <div className="min-h-screen bg-white">
+      {/* ---------------- SECTION 1: HERO ---------------- */}
+      <section className="relative flex min-h-screen flex-col overflow-hidden bg-[#e8eefb]">
+        <ShaderBackground />
 
-      <Navbar />
+        <Navbar />
 
-      <main className="relative z-10">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent pointer-events-none"></div>
-          <div className="relative mx-auto max-w-5xl text-center">
-            <h1 className="animate-on-scroll text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl leading-tight">
-              Uavhengig forsikringshjelp –{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-                enklere og tryggere valg
+        <div className="relative z-20 flex flex-1 items-center">
+          <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12 xl:gap-20">
+          <Reveal>
+          <p className="mb-5 sm:mb-8 text-[13px] sm:text-[14px] tracking-wide text-gray-900">
+            DinForsikringsHjelp.no
+          </p>
+
+          <h1 className="heading-display font-medium text-gray-900">
+            Uavhengig forsikringshjelp.
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>Vi sammenligner for deg,
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>og du velger selv.
+          </h1>
+
+          <p className="mt-6 max-w-xl text-[15px] sm:text-[17px] leading-[1.6] text-gray-700">
+            Vi sammenligner forsikringene dine og viser hvor du kan få bedre
+            pris og bedre vilkår.
+          </p>
+
+          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+            <RollButton href={FORM_URL}>Start forsikringsgjennomgang</RollButton>
+
+            <div className="inline-flex items-center gap-2 sm:gap-3 rounded-[4px] bg-white px-3 sm:px-4 py-2 shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-shadow duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
+              <span className="text-[13px] sm:text-[14px] font-medium text-gray-900">
+                Pengene-tilbake-garanti
               </span>
-            </h1>
-            <p className="animate-on-scroll animate-delay-200 mx-auto mt-8 max-w-2xl text-lg leading-8 text-gray-600 sm:text-xl">
-              Vi sammenligner forsikringene dine og viser hvor du kan få bedre
-              pris og bedre vilkår.
-            </p>
-            <div className="animate-on-scroll animate-delay-300 mt-12 flex justify-center gap-4">
-              <a
-                href="https://pci.jotform.com/form/253004702152038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
-              >
-                Start forsikringsgjennomgang
-                <svg
-                  className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+              <span className="rounded bg-gray-900 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[11px] text-white">
+                Garanti
+              </span>
+            </div>
+          </div>
+          </Reveal>
+
+          <Reveal delay={150} className="mt-10 lg:mt-0 lg:shrink-0">
+            <SavingsCard />
+          </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <CategoryStrip />
+
+      {/* ---------------- SECTION 2: GUARANTEE ---------------- */}
+      <section className="overflow-hidden bg-white pt-16 sm:pt-20 lg:pt-32 pb-12 sm:pb-16 lg:pb-24">
+        <div className="mx-auto w-full max-w-[1440px]">
+          <div className="px-5 sm:px-8 lg:px-12">
+            <Reveal>
+              <SectionBadge number="1">Pengene-tilbake-garanti</SectionBadge>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <h2 className="heading-section font-medium text-gray-900 mb-12 sm:mb-16">
+                Finner vi ikke en bedre avtale
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>enn du har i dag, får du
+                pengene tilbake.
+              </h2>
+            </Reveal>
+
+            <div className="lg:grid lg:grid-cols-[1fr_48%] lg:items-center lg:gap-12 xl:gap-16">
+              <Reveal>
+                <p className="text-[15px] sm:text-[17px] lg:text-[18px] font-medium leading-[1.65] text-gray-900">
+                  Du betaler kun dersom vi klarer å skaffe deg en bedre pris
+                  eller bedre dekning. Slik tar du ingen risiko, og betaler kun
+                  for faktisk verdi.
+                </p>
+
+                <div className="mt-8 rounded-2xl border border-gray-200 p-5 sm:p-6">
+                  <p className="text-[13px] font-medium tracking-wide text-gray-500 mb-1">
+                    Kort fortalt
+                  </p>
+                  <p className="text-[20px] sm:text-[22px] font-semibold tracking-tight text-[#1D4ED8]">
+                    Ingen besparelse = ingen kostnad.
+                  </p>
+                </div>
+
+                <div className="mt-8">
+                  <RollButton onClick={() => setIsGuaranteeExpanded((v) => !v)}>
+                    {isGuaranteeExpanded ? "Vis mindre" : "Les mer om garantien"}
+                  </RollButton>
+                </div>
+              </Reveal>
+
+              <Reveal delay={150} className="mt-10 lg:mt-0">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#F5F5F5]">
+                  <Image
+                    src="/kjokken-lys.jpg"
+                    alt="Lyst kjøkken i en norsk bolig"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 48vw"
+                    className="object-cover"
                   />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Money-Back Guarantee Section */}
-        <section className="relative px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-white">
-          <div className="mx-auto max-w-4xl">
-            <div className="animate-on-scroll bg-white rounded-[20px] shadow-xl border border-blue-100 overflow-hidden">
-              <div className="p-8 sm:p-12">
-                <div className="flex items-center justify-center mb-6">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg">
-                    <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
-                  Pengene-tilbake-garanti
-                </h2>
-                <p className="text-center text-gray-600 text-lg mb-6">
-                  Vi ønsker at dette skal være helt trygt for deg. Derfor har vi en enkel garanti:
-                </p>
+              </Reveal>
+            </div>
 
-                <div className={`transition-all duration-500 ease-in-out ${isGuaranteeExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                  <div className="bg-gradient-to-br from-blue-50 via-blue-50/50 to-sky-100/60 rounded-[15px] p-6 sm:p-8 mb-6">
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                      <strong className="text-gray-900">Finner vi ikke en bedre forsikringsavtale enn du har i dag – får du hele beløpet tilbake.</strong>
+            <div
+              className={`transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+                isGuaranteeExpanded
+                  ? "max-h-[1400px] opacity-100 mt-10"
+                  : "max-h-0 opacity-0 overflow-hidden"
+              }`}
+            >
+              <div className="rounded-2xl bg-[#F5F5F5] p-6 sm:p-8 lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start">
+                <div>
+                  <h3 className="text-[15px] sm:text-[16px] font-semibold text-gray-900 mb-5">
+                    Slik fungerer det
+                  </h3>
+                  <ol className="space-y-4">
+                    {GUARANTEE_STEPS.map((step, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-900 text-[11px] font-semibold text-white">
+                          {i + 1}
+                        </span>
+                        <span className="text-[14px] sm:text-[15px] leading-relaxed text-gray-700">
+                          {step}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                  <div className="mt-6 lg:mt-0 rounded-xl bg-white p-5 sm:p-6">
+                    <p className="text-[13px] font-medium tracking-wide text-gray-500 mb-2">
+                      Helt risikofritt
                     </p>
-                    <p className="text-gray-700 leading-relaxed mb-6">
-                      Du betaler altså kun dersom vi klarer å skaffe deg en bedre pris eller bedre dekning. Dette sikrer at du ikke tar noen risiko, og at du kun betaler for faktisk verdi.
+                    <p className="text-[14px] sm:text-[15px] leading-relaxed text-gray-600">
+                      Dette gjør tjenesten vår helt risikofri for deg, og sikrer
+                      at du kun betaler når du faktisk får en bedre avtale.
                     </p>
-
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Slik fungerer det:</h3>
-                    <ol className="space-y-3 mb-6">
-                      <li className="flex items-start">
-                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">1</span>
-                        <span className="text-gray-700">Du sender oss dine nåværende forsikringer.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">2</span>
-                        <span className="text-gray-700">Vi henter inn tilbud fra flere selskaper og setter det opp i en tydelig sammenligning.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">3</span>
-                        <span className="text-gray-700">Dersom vi finner en løsning som er bedre for deg → du betaler for tjenesten.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold mr-3 mt-0.5">4</span>
-                        <span className="text-gray-700">Hvis ikke → vi refunderer hele beløpet, uten spørsmål.</span>
-                      </li>
-                    </ol>
-
-                    <div className="bg-white rounded-[15px] p-6 shadow-md">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Kort fortalt:</h4>
-                      <p className="text-xl font-bold text-blue-600">Ingen besparelse = ingen kostnad.</p>
-                      <p className="text-gray-700 mt-3 leading-relaxed">
-                        Dette gjør tjenesten vår helt risikofri for deg, og sikrer at du kun betaler når du faktisk får en bedre avtale.
-                      </p>
-                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+      </section>
 
-                <div className="flex justify-center">
-                  <button
-                    onClick={() => setIsGuaranteeExpanded(!isGuaranteeExpanded)}
-                    className="group inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+      {/* ---------------- SECTION 3: PRICING ---------------- */}
+      <section className="bg-[#F5F5F5] pt-16 sm:pt-20 lg:pt-28 pb-16 sm:pb-20 lg:pb-28">
+        <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
+            <SectionBadge number="2" borderClass="border-gray-300">
+              Priser
+            </SectionBadge>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <h2 className="heading-display font-medium text-gray-900 mb-4">
+              Prisen følger antallet
+            </h2>
+            <p className="max-w-xl text-[15px] sm:text-[17px] text-gray-600 mb-12 sm:mb-16">
+              Én fast pris per gjennomgang, bestemt av hvor mange
+              forsikringer du vil at vi skal se på. Ingen abonnement.
+            </p>
+          </Reveal>
+
+          <Reveal delay={140}>
+            <PriceScale />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------------- SECTION 4: HOW IT WORKS ---------------- */}
+      <section className="bg-white pt-16 sm:pt-20 lg:pt-28 pb-16 sm:pb-20 lg:pb-28">
+        <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <Reveal>
+            <SectionBadge number="3">Slik fungerer det</SectionBadge>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <h2 className="heading-section font-medium text-gray-900 mb-10 sm:mb-14 lg:mb-16">
+              Tre enkle steg til bedre forsikring.
+            </h2>
+          </Reveal>
+
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
+            {/* Hairline connecting the three steps on desktop. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-0 right-0 top-[62px] hidden md:block h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"
+            />
+
+            {STEPS.map((s, i) => (
+              <Reveal key={s.n} delay={i * 110}>
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 shadow-[0_2px_10px_rgba(0,0,0,0.04)] transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:-translate-y-1 hover:border-[#1D4ED8]/25 hover:shadow-[0_14px_34px_rgba(29,78,216,0.12)]">
+                  {/* Oversized ghost numeral for depth. */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -right-2 -top-4 select-none text-[92px] font-semibold leading-none tracking-tight text-gray-900/[0.035] transition-colors duration-500 group-hover:text-[#1D4ED8]/[0.07]"
                   >
-                    {isGuaranteeExpanded ? 'Vis mindre' : 'Les mer'}
-                    <svg
-                      className={`ml-2 h-5 w-5 transition-transform duration-300 ${isGuaranteeExpanded ? 'rotate-180' : ''}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                    {s.n}
+                  </span>
 
-        {/* Pricing Section */}
-        <section className="relative px-4 py-16 sm:px-6 lg:px-8 bg-white">
-          <div className="mx-auto max-w-5xl">
-            <div className="animate-on-scroll text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-                Priser
+                  <span className="relative mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#1D4ED8]/8 text-[#1D4ED8] transition-[transform,background-color] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:-translate-y-0.5 group-hover:bg-[#1D4ED8] group-hover:text-white">
+                    <s.Icon size={20} strokeWidth={1.5} />
+                  </span>
+
+                  <span className="relative text-[13px] font-semibold text-[#1D4ED8]">
+                    {s.n}
+                  </span>
+                  <h3 className="relative mt-4 text-[18px] sm:text-[20px] font-medium tracking-[-0.02em] text-gray-900">
+                    {s.title}
+                  </h3>
+                  <p className="relative mt-3 text-[14px] sm:text-[15px] leading-relaxed text-gray-600">
+                    {s.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- SECTION 5: CLOSING CTA ---------------- */}
+      <section className="bg-white pb-16 sm:pb-20 lg:pb-28">
+        <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="relative overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-10 lg:px-16 py-14 sm:py-20 lg:py-24">
+            {/* Photo bleeds in from the right; the gradient keeps the copy legible. */}
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[55%]">
+              <Image
+                src="/hjem-kveld.jpg"
+                alt="Moderne bolig i skumringen"
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/85 to-gray-900/55 lg:via-gray-900/70 lg:to-gray-900/20" />
+            </div>
+
+            <Reveal className="relative">
+              <h2
+                className="max-w-3xl font-medium leading-[1.08] tracking-[-0.03em] text-white"
+                style={{ fontSize: "clamp(1.75rem,5vw,3.6rem)" }}
+              >
+                Klar for å få oversikt?
               </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                Enkle og forutsigbare priser basert på antall forsikringer
+              <p className="mt-6 max-w-xl text-[15px] sm:text-[17px] leading-[1.6] text-white/70">
+                Start en uforpliktende gjennomgang. Ingen bindinger, kun oversikt
+                og bedre priser.
               </p>
-            </div>
-
-            <div className="animate-on-scroll animate-delay-200 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {/* Pricing Card 1 */}
-              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="mb-4">
-                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">1-2 forsikringer</div>
-                  <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gray-900">199</span>
-                    <span className="ml-2 text-gray-600">kr</span>
-                  </div>
-                </div>
+              <div className="mt-8 sm:mt-10">
+                <RollButton id="start" href={FORM_URL}>
+                  Start forsikringsgjennomgang
+                </RollButton>
               </div>
-
-              {/* Pricing Card 2 */}
-              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="mb-4">
-                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">3-5 forsikringer</div>
-                  <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gray-900">399</span>
-                    <span className="ml-2 text-gray-600">kr</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Pricing Card 3 */}
-              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="mb-4">
-                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">6-8 forsikringer</div>
-                  <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gray-900">599</span>
-                    <span className="ml-2 text-gray-600">kr</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Pricing Card 4 */}
-              <div className="group relative overflow-hidden rounded-[15px] border border-blue-200 bg-gradient-to-br from-white to-blue-50/30 p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="mb-4">
-                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">9-11 forsikringer</div>
-                  <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gray-900">799</span>
-                    <span className="ml-2 text-gray-600">kr</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Pricing Card 5 */}
-              <div className="group relative overflow-hidden rounded-[15px] border-2 border-blue-400 bg-gradient-to-br from-blue-50 to-blue-100/50 p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 md:col-span-2 lg:col-span-1">
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-[10px]">
-                  POPULÆRT
-                </div>
-                <div className="mb-4 mt-2">
-                  <div className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">12+ forsikringer</div>
-                  <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gray-900">999</span>
-                    <span className="ml-2 text-gray-600">kr</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Delivery Time Notice */}
-            <div className="animate-on-scroll animate-delay-300 mt-10 text-center">
-              <div className="inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-50 to-sky-100/60 px-6 py-4 shadow-sm border border-blue-200">
-                <svg className="h-5 w-5 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="text-gray-700 font-medium">
-                  Tjenesten leveres digitalt innen 24–48 timer.
-                </span>
-              </div>
-            </div>
+            </Reveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 3-Step Process Section */}
-        <section className="px-4 py-24 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50/30">
-          <div className="mx-auto max-w-7xl">
-            <div className="animate-on-scroll text-center mb-20">
-              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
-                Slik fungerer det
-              </h2>
-              <p className="mt-5 text-lg text-gray-600">
-                Tre enkle steg til bedre forsikring
-              </p>
-            </div>
-
-            <div className="grid gap-8 md:grid-cols-3 lg:gap-12">
-              {/* Step 1 */}
-              <div className="animate-on-scroll group">
-                <div className="flex flex-col items-center text-center p-8 rounded-[15px] bg-white shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-[15px] bg-gradient-to-br from-blue-500 to-blue-300 shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-110">
-                    <svg
-                      className="h-10 w-10 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mb-3 text-sm font-bold text-blue-600">
-                    STEG 1
-                  </div>
-                  <h3 className="mb-4 text-xl font-bold text-gray-900">
-                    Send inn skjemaet
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    2–3 minutter, kun det viktigste. Vi trenger bare grunnleggende
-                    informasjon for å komme i gang.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="animate-on-scroll animate-delay-200 group">
-                <div className="flex flex-col items-center text-center p-8 rounded-[15px] bg-white shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-[15px] bg-gradient-to-br from-blue-500 to-blue-300 shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-110">
-                    <svg
-                      className="h-10 w-10 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mb-3 text-sm font-bold text-blue-600">
-                    STEG 2
-                  </div>
-                  <h3 className="mb-4 text-xl font-bold text-gray-900">
-                    Vi sammenligner
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Vi henter og sammenligner tilbud for deg fra ulike
-                    forsikringsselskaper.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="animate-on-scroll animate-delay-400 group">
-                <div className="flex flex-col items-center text-center p-8 rounded-[15px] bg-white shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-[15px] bg-gradient-to-br from-blue-500 to-blue-300 shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-110">
-                    <svg
-                      className="h-10 w-10 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mb-3 text-sm font-bold text-blue-600">
-                    STEG 3
-                  </div>
-                  <h3 className="mb-4 text-xl font-bold text-gray-900">
-                    Du velger
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Se pris og vilkår side ved side, og velg det som passer deg
-                    best.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Reassuring CTA Section */}
-        <section className="px-4 py-24 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/30 to-white">
-          <div className="mx-auto max-w-5xl">
-            <div className="animate-on-scroll rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-20 text-center shadow-2xl sm:px-16 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-              <div className="relative">
-                <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-                  Klar for å få oversikt?
-                </h2>
-                <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl leading-relaxed">
-                  Start en uforpliktende gjennomgang. Ingen bindinger, kun oversikt
-                  og bedre priser.
-                </p>
-                <div className="mt-10">
-                  <a
-                    id="start"
-                    href="https://pci.jotform.com/form/253004702152038"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-[15px] bg-white px-10 py-4 text-lg font-semibold text-blue-600 shadow-xl transition-all duration-300 hover:bg-blue-50 hover:shadow-2xl hover:scale-105"
-                  >
-                    Start forsikringsgjennomgang
-                    <svg
-                      className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-blue-100 bg-gradient-to-b from-white to-blue-50/20">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      {/* ---------------- SECTION 6: FOOTER ---------------- */}
+      <footer className="border-t border-gray-200 bg-white">
+        <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12 py-14 sm:py-16">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-            <div className="animate-on-scroll">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden">
+            <div>
+              <div className="flex items-center gap-2 mb-5">
+                <span className="relative block w-10 h-10">
                   <Image
                     src="/logo-forsikring.jpeg"
-                    alt="dinforsikringshjelp.no logo"
+                    alt="DinForsikringsHjelp.no logo"
                     fill
+                    sizes="40px"
                     className="object-contain"
                   />
-                </div>
-                <span className="text-lg font-bold text-gray-800">
+                </span>
+                <span className="text-[15px] font-semibold tracking-tight text-gray-900">
                   DinForsikringsHjelp.no
                 </span>
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">
+              <p className="text-[14px] leading-relaxed text-gray-600 mb-5">
                 Uavhengig forsikringssammenligning for privatpersoner i Norge.
               </p>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p className="font-semibold text-gray-800">Dinforsikringshjelp (ENK)</p>
+              <div className="space-y-1.5 text-[14px] text-gray-600">
+                <p className="font-medium text-gray-900">
+                  Dinforsikringshjelp (ENK)
+                </p>
                 <p>Org.nr: 933 424 766</p>
                 <p>
                   <a
                     href="mailto:kontakt@dinforsikringshjelp.no"
-                    className="hover:text-blue-600 transition-colors duration-300"
+                    className="hover:text-gray-900 transition-colors duration-300"
                   >
                     E-post: kontakt@dinforsikringshjelp.no
                   </a>
@@ -437,15 +344,15 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="animate-on-scroll animate-delay-200">
-              <h3 className="mb-5 text-sm font-semibold text-gray-900 uppercase tracking-wider">
+            <div>
+              <h3 className="mb-5 text-[13px] font-medium tracking-wide text-gray-500">
                 Sider
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-[14px]">
                 <li>
                   <Link
                     href="/vilkar"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Vilkår
                   </Link>
@@ -453,7 +360,7 @@ export default function Home() {
                 <li>
                   <Link
                     href="/salgsvilkar"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Salgs- og kjøpsvilkår
                   </Link>
@@ -461,54 +368,45 @@ export default function Home() {
                 <li>
                   <Link
                     href="/personvern"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Personvern
                   </Link>
                 </li>
                 <li>
                   <a
-                    href="https://pci.jotform.com/form/253004702152038"
+                    href={FORM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="inline-flex items-center gap-1.5 text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Start skjema
+                    <ArrowRight size={13} />
                   </a>
                 </li>
               </ul>
             </div>
 
-            <div className="animate-on-scroll animate-delay-400">
-              <h3 className="mb-5 text-sm font-semibold text-gray-900 uppercase tracking-wider">
+            <div>
+              <h3 className="mb-5 text-[13px] font-medium tracking-wide text-gray-500">
                 Kontakt
               </h3>
-              <p className="text-gray-600">
-                <a
-                  href="mailto:kontakt@dinforsikringshjelp.no"
-                  className="hover:text-blue-600 transition-colors duration-300"
-                >
-                  kontakt@dinforsikringshjelp.no
-                </a>
-              </p>
+              <a
+                href="mailto:kontakt@dinforsikringshjelp.no"
+                className="text-[14px] text-gray-600 hover:text-gray-900 transition-colors duration-300"
+              >
+                kontakt@dinforsikringshjelp.no
+              </a>
             </div>
           </div>
 
-          <div className="mt-12 border-t border-blue-100 pt-8">
-            <p className="text-center text-sm text-gray-500">
+          <div className="mt-12 border-t border-gray-200 pt-8">
+            <p className="text-[13px] text-gray-500">
               © 2025 dinforsikringshjelp.no • Juridisk enhet: Dinforsikringshjelp
               (ENK)
             </p>
-            <p className="text-center text-xs text-gray-400 mt-3">
-              Powered by{" "}
-              <a
-                href="https://lanuitech.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:text-blue-600 transition-colors duration-300"
-              >
-                Lanuit Tech LLC
-              </a>
+            <p className="mt-2 text-[12px] text-gray-400">
+              Built by Arc Labs AS
             </p>
           </div>
         </div>

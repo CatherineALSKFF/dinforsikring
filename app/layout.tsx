@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import StructuredData from "./components/StructuredData";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,6 +40,20 @@ export const metadata: Metadata = {
     images: ["/logo-forsikring.jpeg"],
   },
   metadataBase: new URL("https://dinforsikringshjelp.no"),
+  alternates: { canonical: "/" },
+  applicationName: "DinForsikringsHjelp.no",
+  category: "finance",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -47,7 +62,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="no">
+    <html lang="nb-NO">
+      <head>
+        <StructuredData />
+      </head>
       <body
         className={`${inter.variable} font-sans antialiased`}
       >

@@ -1,22 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import Navbar from "../components/Navbar";
+import LegalHeader from "../components/LegalHeader";
 
 export default function Vilkar() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-      <Navbar />
+    <div className="min-h-screen bg-white">
+      <LegalHeader title="Tjenesteavtale" meta="Organisasjonsnummer: 933 424 766" />
 
-      <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="rounded-[20px] bg-white shadow-xl border border-blue-100 p-8 sm:p-12">
-          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
-            Tjenesteavtale
-          </h1>
-          <p className="text-sm text-gray-500 mb-2">Dinforsikringshjelp.no</p>
-          <p className="text-sm text-gray-500 mb-8">Organisasjonsnummer: 933 424 766</p>
+      <main className="mx-auto w-full max-w-[900px] px-5 sm:px-8 py-14 sm:py-20">
+        <div className="legal">
 
-          <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8">
+          <div className="bg-[#1D4ED8]/5 border-l-2 border-[#1D4ED8] p-4 mb-8">
             <p className="text-gray-700 leading-relaxed">
               Avtalen gjelder mellom <strong>Dinforsikringshjelp.no (ENK)</strong> og <strong>Kunden</strong>.<br />
               Ved innsending av skjemaet på Dinforsikringshjelp.no aksepterer Kunden vilkårene nedenfor.
@@ -25,7 +20,7 @@ export default function Vilkar() {
 
           {/* §1 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§1 Formål</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§1 Formål</h2>
             <div className="text-gray-700 leading-relaxed space-y-3">
               <p>
                 Dinforsikringshjelp.no tilbyr en digital tjeneste hvor vi innhenter og sammenstiller forsikringstilbud på vegne av kunden.
@@ -47,7 +42,7 @@ export default function Vilkar() {
 
           {/* §2 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§2 Uavhengighet</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§2 Uavhengighet</h2>
             <ul className="list-disc ml-6 space-y-2 text-gray-700">
               <li>Dinforsikringshjelp.no mottar ingen provisjon fra forsikringsselskaper</li>
               <li>Kunden betaler hele vederlaget</li>
@@ -59,30 +54,30 @@ export default function Vilkar() {
 
           {/* §3 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§3 Pris og betaling</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§3 Pris og betaling</h2>
 
             <div className="mb-6">
               <p className="font-semibold text-gray-900 mb-3">Prisstruktur (inkl. mva):</p>
-              <div className="bg-gradient-to-br from-blue-50 to-sky-50 rounded-[15px] p-6 space-y-2">
+              <div className="bg-[#F5F5F5] rounded-2xl p-6 space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">1–2 produkter:</span>
-                  <span className="font-bold text-gray-900">199 kr</span>
+                  <span className="text-gray-700">1 til 2 produkter:</span>
+                  <span className="font-semibold text-gray-900">199 kr</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">3–5 produkter:</span>
-                  <span className="font-bold text-gray-900">399 kr</span>
+                  <span className="text-gray-700">3 til 5 produkter:</span>
+                  <span className="font-semibold text-gray-900">399 kr</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">6–8 produkter:</span>
-                  <span className="font-bold text-gray-900">599 kr</span>
+                  <span className="text-gray-700">6 til 8 produkter:</span>
+                  <span className="font-semibold text-gray-900">599 kr</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">9–11 produkter:</span>
-                  <span className="font-bold text-gray-900">799 kr</span>
+                  <span className="text-gray-700">9 til 11 produkter:</span>
+                  <span className="font-semibold text-gray-900">799 kr</span>
                 </div>
-                <div className="flex justify-between items-center border-t border-blue-200 pt-2">
+                <div className="flex justify-between items-center border-t border-gray-200 pt-2">
                   <span className="text-gray-700">12+ produkter:</span>
-                  <span className="font-bold text-blue-600 text-lg">999 kr</span>
+                  <span className="font-semibold text-[#1D4ED8] text-lg">999 kr</span>
                 </div>
               </div>
             </div>
@@ -95,13 +90,13 @@ export default function Vilkar() {
               </ul>
             </div>
 
-            <div className="bg-green-50 border border-green-200 rounded-[15px] p-6">
+            <div className="bg-green-50 border border-green-200 rounded-2xl p-6">
               <p className="font-semibold text-gray-900 mb-2">Fornøyd-garanti:</p>
               <p className="text-gray-700 leading-relaxed mb-2">
                 Dersom Dinforsikringshjelp.no ikke klarer å hente inn et like bra eller bedre tilbud enn kunden har i dag, refunderes hele beløpet.
               </p>
               <p className="text-gray-700">
-                Refusjon behandles innen <strong>5–10 virkedager</strong>.
+                Refusjon behandles innen <strong>5 til 10 virkedager</strong>.
               </p>
             </div>
           </section>
@@ -110,7 +105,7 @@ export default function Vilkar() {
 
           {/* §4 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§4 Samtykke og innhenting av tilbud</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§4 Samtykke og innhenting av tilbud</h2>
             <div className="text-gray-700 leading-relaxed space-y-3">
               <p>Ved innsending av skjema samtykker kunden til at Dinforsikringshjelp.no kan:</p>
               <ul className="list-disc ml-6 space-y-2">
@@ -129,7 +124,7 @@ export default function Vilkar() {
 
           {/* §5 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§5 Ansvarsbegrensning</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§5 Ansvarsbegrensning</h2>
             <ul className="list-disc ml-6 space-y-2 text-gray-700">
               <li>Dinforsikringshjelp.no garanterer ikke for fremtidige priser, vilkår eller rabatter hos forsikringsselskaper</li>
               <li>Kunden er selv ansvarlig for valg av forsikringsselskap og avtaleinngåelser</li>
@@ -142,7 +137,7 @@ export default function Vilkar() {
 
           {/* §6 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§6 Oppsigelse</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§6 Oppsigelse</h2>
             <div className="text-gray-700 leading-relaxed space-y-3">
               <p>
                 Kunden kan avbestille tjenesten før arbeidet påbegynnes.
@@ -157,7 +152,7 @@ export default function Vilkar() {
 
           {/* §7 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§7 Konfidensialitet</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§7 Konfidensialitet</h2>
             <div className="text-gray-700 leading-relaxed space-y-3">
               <p>
                 All informasjon kunden oppgir behandles konfidensielt og deles kun med aktører hvor dette er nødvendig for å hente inn tilbud.
@@ -172,7 +167,7 @@ export default function Vilkar() {
 
           {/* §8 */}
           <section className="mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">§8 Tvister</h2>
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">§8 Tvister</h2>
             <div className="text-gray-700 leading-relaxed space-y-3">
               <p>
                 Tvister søkes løst i minnelighet.
@@ -189,11 +184,11 @@ export default function Vilkar() {
           <div className="border-t border-gray-200 my-8"></div>
 
           {/* Contact */}
-          <section className="bg-blue-50 rounded-[15px] p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Kontakt</h2>
+          <section className="bg-[#F5F5F5] rounded-2xl p-6">
+            <h2 className="text-[20px] font-semibold tracking-[-0.01em] text-gray-900 mb-4">Kontakt</h2>
             <div className="text-gray-700 space-y-1">
               <p><strong>Dinforsikringshjelp.no</strong></p>
-              <p>E-post: <a href="mailto:kontakt@dinforsikringshjelp.no" className="text-blue-600 hover:text-blue-700 transition-colors">kontakt@dinforsikringshjelp.no</a></p>
+              <p>E-post: <a href="mailto:kontakt@dinforsikringshjelp.no" className="text-[#1D4ED8] hover:text-gray-900 transition-colors">kontakt@dinforsikringshjelp.no</a></p>
               <p>Organisasjonsnummer: 933 424 766</p>
             </div>
           </section>
@@ -202,7 +197,7 @@ export default function Vilkar() {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
+            className="inline-flex items-center justify-center rounded-2xl bg-[#1D4ED8] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
           >
             Tilbake til forsiden
           </Link>
@@ -210,12 +205,12 @@ export default function Vilkar() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-blue-100 bg-gradient-to-b from-white to-blue-50/20 mt-16">
+      <footer className="border-t border-gray-200 bg-white mt-16">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
             <div>
               <div className="flex items-center mb-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-[15px] bg-gradient-to-br from-blue-600 to-blue-400 text-white font-bold text-lg shadow-lg">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1D4ED8] text-white font-semibold text-[15px]">
                   D
                 </div>
                 <span className="ml-3 text-lg font-semibold text-gray-900">
@@ -231,7 +226,7 @@ export default function Vilkar() {
                 <p>
                   <a
                     href="mailto:kontakt@dinforsikringshjelp.no"
-                    className="hover:text-blue-600 transition-colors duration-300"
+                    className="hover:text-gray-900 transition-colors duration-300"
                   >
                     E-post: kontakt@dinforsikringshjelp.no
                   </a>
@@ -247,7 +242,7 @@ export default function Vilkar() {
                 <li>
                   <Link
                     href="/vilkar"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Vilkår
                   </Link>
@@ -255,7 +250,7 @@ export default function Vilkar() {
                 <li>
                   <Link
                     href="/salgsvilkar"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Salgs- og kjøpsvilkår
                   </Link>
@@ -263,7 +258,7 @@ export default function Vilkar() {
                 <li>
                   <Link
                     href="/personvern"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Personvern
                   </Link>
@@ -273,7 +268,7 @@ export default function Vilkar() {
                     href="https://pci.jotform.com/form/253004702152038"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >
                     Start skjema
                   </a>
@@ -288,7 +283,7 @@ export default function Vilkar() {
               <p className="text-gray-600">
                 <a
                   href="mailto:kontakt@dinforsikringshjelp.no"
-                  className="hover:text-blue-600 transition-colors duration-300"
+                  className="hover:text-gray-900 transition-colors duration-300"
                 >
                   kontakt@dinforsikringshjelp.no
                 </a>
@@ -296,7 +291,7 @@ export default function Vilkar() {
             </div>
           </div>
 
-          <div className="mt-12 border-t border-blue-100 pt-8">
+          <div className="mt-12 border-t border-gray-200 pt-8">
             <p className="text-center text-sm text-gray-500">
               © 2025 dinforsikringshjelp.no • Juridisk enhet: Dinforsikringshjelp
               (ENK)
@@ -304,12 +299,12 @@ export default function Vilkar() {
             <p className="text-center text-xs text-gray-400 mt-3">
               Powered by{" "}
               <a
-                href="https://lanuitech.com/"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:text-blue-600 transition-colors duration-300"
+                className="text-gray-500 hover:text-gray-900 transition-colors duration-300"
               >
-                Lanuit Tech LLC
+                Arc Labs AS
               </a>
             </p>
           </div>

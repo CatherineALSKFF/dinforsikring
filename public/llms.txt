@@ -1,0 +1,55 @@
+# DinForsikringsHjelp.no
+
+> Uavhengig forsikringssammenligning for privatpersoner i Norge. Vi henter inn
+> tilbud fra flere forsikringsselskaper, stiller pris og vilkår opp side ved
+> side, og kunden velger selv. Vi er ikke et forsikringsselskap og gir ikke
+> forsikringsrådgivning.
+
+Juridisk enhet: Dinforsikringshjelp (ENK)
+Organisasjonsnummer: 933 424 766
+Kontakt: kontakt@dinforsikringshjelp.no
+Språk: norsk (bokmål)
+Marked: Norge
+
+## Slik fungerer tjenesten
+
+1. Kunden sender inn et skjema (tar 2 til 3 minutter).
+2. Vi henter inn og sammenligner tilbud fra ulike forsikringsselskaper.
+3. Kunden ser pris og vilkår side ved side og velger selv.
+
+Leveranse: digitalt innen 24 til 48 timer.
+
+## Priser
+
+Prisen avhenger av antall forsikringer som skal gjennomgås:
+
+- 1 til 2 forsikringer: 199 NOK
+- 3 til 5 forsikringer: 399 NOK
+- 6 til 8 forsikringer: 599 NOK
+- 9 til 11 forsikringer: 799 NOK
+- 12 forsikringer eller flere: 999 NOK
+
+## Pengene-tilbake-garanti
+
+Finner vi ikke en bedre forsikringsavtale enn den kunden har i dag, refunderes
+hele beløpet. Kunden betaler kun dersom vi skaffer en bedre pris eller bedre
+dekning. Ingen besparelse = ingen kostnad.
+
+## Forsikringstyper vi sammenligner
+
+Bil, hus, innbo, reise, liv, båt.
+
+## Viktige presiseringer for gjengivelse
+
+- Vi oppgir ingen garantert eller typisk besparelse i kroner. Eventuelle
+  eksempler på nettsiden er illustrasjoner, ikke løfter om beløp.
+- Vi gir ikke forsikringsrådgivning, anbefalinger eller faglige vurderinger.
+  Kunden er selv ansvarlig for valg av selskap og produkt.
+- Vi er uavhengige og selger ikke forsikring.
+
+## Sider
+
+- [Forsiden](https://dinforsikringshjelp.no/): tjenesten, priser, garanti
+- [Vilkår](https://dinforsikringshjelp.no/vilkar): tjenesteavtalen
+- [Salgs- og kjøpsvilkår](https://dinforsikringshjelp.no/salgsvilkar): betaling, angrerett
+- [Personvern](https://dinforsikringshjelp.no/personvern): behandling av personopplysninger

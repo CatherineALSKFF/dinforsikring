@@ -2,159 +2,159 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ArrowRight, Clock, Menu, X } from "lucide-react";
+import RollButton from "./RollButton";
+
+const EASE = "ease-[cubic-bezier(0.25,0.1,0.25,1)]";
+const FORM_URL = "https://pci.jotform.com/form/253004702152038";
+
+const NAV_LINKS = [
+  { label: "Personvern", href: "/personvern" },
+  { label: "Vilkår", href: "/vilkar" },
+  { label: "Salgsvilkår", href: "/salgsvilkar" },
+];
+
+function useOsloTime() {
+  const [time, setTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const tick = () =>
+      setTime(
+        new Intl.DateTimeFormat("nb-NO", {
+          timeZone: "Europe/Oslo",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }).format(new Date())
+      );
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  // null until mounted so server and client markup match.
+  return time;
+}
 
 export default function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const time = useOsloTime();
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-blue-100 bg-white/90 backdrop-blur-md shadow-sm">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 sm:gap-3 animate-fade-in animate-delay-100">
-              <div className="relative h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 flex-shrink-0 overflow-hidden">
+      <div className="relative z-20 mx-auto w-full max-w-[1440px] p-2 sm:p-3">
+        <nav className="flex items-center justify-between rounded-full bg-white p-[5px] shadow-[0_4px_24px_rgba(16,32,64,0.10)] ring-1 ring-gray-900/5">
+          {/* Left: logo + links */}
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <span className="relative block w-9 h-9 sm:w-10 sm:h-10">
                 <Image
                   src="/logo-forsikring.jpeg"
-                  alt="dinforsikringshjelp.no logo"
+                  alt="DinForsikringsHjelp.no logo"
                   fill
+                  sizes="40px"
                   className="object-contain"
                   priority
                 />
-              </div>
-              <span className="text-sm sm:text-base lg:text-xl font-bold text-gray-800 whitespace-nowrap">
+              </span>
+              <span className="text-[13px] sm:text-[14px] font-semibold tracking-tight text-gray-900 whitespace-nowrap">
                 DinForsikringsHjelp.no
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8 animate-fade-in animate-delay-200">
-              <Link
-                href="/personvern"
-                className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
-              >
-                Personvern
-              </Link>
-              <Link
-                href="/vilkar"
-                className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
-              >
-                Vilkår
-              </Link>
-              <a
-                href="https://pci.jotform.com/form/253004702152038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-6 py-2.5 text-white font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                Start skjema
-              </a>
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors z-[60] relative"
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="h-6 w-6 text-gray-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+            <div className="hidden md:flex items-center gap-6">
+              {NAV_LINKS.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-[14px] text-gray-900 hover:text-gray-500 transition-colors duration-300"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </header>
 
-      {/* Full-Screen Mobile Menu */}
+          {/* Right: status, clock, CTA */}
+          <div className="hidden md:flex items-center gap-4 pr-[1px]">
+            <span className="hidden lg:inline text-[13px] text-gray-600">
+              Svar innen 24 til 48 timer
+            </span>
+            <span className="flex items-center gap-1.5 text-[13px] text-gray-600">
+              <Clock size={14} />
+              <span className="tabular-nums">
+                {time ? `${time} i Oslo` : "i Oslo"}
+              </span>
+            </span>
+            <RollButton href={FORM_URL} variant="dark" size="sm">
+              Start skjema
+            </RollButton>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setIsOpen((v) => !v)}
+            aria-label={isOpen ? "Lukk meny" : "Åpne meny"}
+            className="md:hidden mr-[1px] flex items-center gap-1.5 rounded-full bg-gray-900 px-4 py-2 text-[13px] font-medium text-white"
+          >
+            {isOpen ? <X size={14} /> : <Menu size={14} />}
+            {isOpen ? "Lukk" : "Meny"}
+          </button>
+        </nav>
+      </div>
+
+      {/* Mobile bottom sheet */}
       <div
-        className={`fixed inset-0 bg-black/60 backdrop-blur-md z-[55] md:hidden transition-opacity duration-300 ${
-          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={() => setIsMobileMenuOpen(false)}
-      />
-
-      {/* Menu Content - Slides in from right */}
-      <nav
-        className={`fixed inset-y-0 right-0 w-full sm:w-96 bg-white z-[56] md:hidden shadow-2xl transform transition-transform duration-500 ease-out ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 z-50 md:hidden ${
+          isOpen ? "" : "pointer-events-none"
         }`}
       >
-        <div className="flex flex-col h-full">
-          {/* Close Button Header */}
-          <div className="flex items-center justify-between px-6 py-6 border-b border-gray-100">
-            <span className="text-lg font-semibold text-gray-800">Meny</span>
-            <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2 rounded-full hover:bg-gradient-to-br hover:from-blue-50 hover:to-sky-50 transition-all duration-300 group"
-              aria-label="Close menu"
-            >
-              <svg
-                className="h-6 w-6 text-gray-600 group-hover:text-blue-600 transition-colors"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+        <div
+          onClick={() => setIsOpen(false)}
+          className={`absolute inset-0 bg-black/60 transition-opacity duration-500 ${
+            isOpen ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <div
+          className={`absolute inset-x-0 bottom-0 mx-3 mb-3 rounded-2xl bg-white p-6 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+            isOpen ? "translate-y-0" : "translate-y-full"
+          }`}
+        >
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-[12px] text-gray-600">
+            <Clock size={13} />
+            <span className="tabular-nums">
+              {time ? `${time} i Oslo` : "i Oslo"}
+            </span>
+          </span>
+
+          <div className="mt-6 flex flex-col gap-3">
+            {NAV_LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setIsOpen(false)}
+                className="text-[28px] leading-[32px] font-medium tracking-tight text-gray-900"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+                {l.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Menu Items */}
-          <div className="flex-1 flex flex-col justify-center px-8 py-12 space-y-6">
-            <Link
-              href="/personvern"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="group py-4 px-6 text-xl font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-[15px] hover:bg-gradient-to-r hover:from-blue-50/50 hover:via-sky-50/30 hover:to-blue-50/50"
-            >
-              Personvern
-            </Link>
-            <Link
-              href="/vilkar"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="group py-4 px-6 text-xl font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-[15px] hover:bg-gradient-to-r hover:from-blue-50/50 hover:via-sky-50/30 hover:to-blue-50/50"
-            >
-              Vilkår
-            </Link>
-            <a
-              href="https://pci.jotform.com/form/253004702152038"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 rounded-[15px] bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 px-8 py-4 text-center text-lg text-white font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              Start skjema
-            </a>
-          </div>
-
-          {/* Footer decoration */}
-          <div className="px-8 py-6 border-t border-gray-100">
-            <p className="text-sm text-gray-500 text-center">DinForsikringsHjelp.no</p>
-          </div>
+          <a
+            href={FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className={`mt-8 flex items-center justify-between rounded-full bg-[#1D4ED8] pl-5 pr-2 py-2 text-[14px] font-medium text-white transition-colors duration-500 ${EASE}`}
+          >
+            Start forsikringsgjennomgang
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white">
+              <ArrowRight size={15} className="text-[#1D4ED8]" />
+            </span>
+          </a>
         </div>
-      </nav>
+      </div>
     </>
   );
 }
