@@ -277,7 +277,7 @@ export default function Home() {
             <div className="pointer-events-none absolute inset-y-0 right-0 w-full lg:w-[55%]">
               <Image
                 src="/hjem-kveld.jpg"
-                alt="Moderne bolig i skumringen"
+                alt="Norsk trehus i skumringen med lys i vinduene"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover"

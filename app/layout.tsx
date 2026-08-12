@@ -8,6 +8,18 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+/**
+ * Absolute URLs in the metadata (Open Graph image, canonical) have to resolve on
+ * whichever host is actually serving the build, otherwise a shared link points at
+ * a domain that never renders this app. Set NEXT_PUBLIC_SITE_URL per environment;
+ * Vercel's own production URL is the fallback before the live domain.
+ */
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://dinforsikringshjelp.no");
+
 export const metadata: Metadata = {
   title: "Dinforsikringshjelp.no - Uavhengig forsikringssammenligning",
   description: "Vi sammenligner forsikringene dine og viser hvor du kan få bedre pris og bedre vilkår. Start en uforpliktende gjennomgang i dag.",
@@ -17,29 +29,22 @@ export const metadata: Metadata = {
     icon: "/logo-forsikring.jpeg",
     apple: "/logo-forsikring.jpeg",
   },
+  // No `images` key on either block: that lets the generated card in
+  // app/opengraph-image.tsx supply both the OG and Twitter preview image.
   openGraph: {
     type: "website",
     locale: "nb_NO",
-    url: "https://dinforsikringshjelp.no",
+    url: SITE_URL,
     siteName: "DinForsikringsHjelp.no",
     title: "Dinforsikringshjelp.no - Uavhengig forsikringssammenligning",
     description: "Vi sammenligner forsikringene dine og viser hvor du kan få bedre pris og bedre vilkår. Start en uforpliktende gjennomgang i dag.",
-    images: [
-      {
-        url: "/logo-forsikring.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "DinForsikringsHjelp.no logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dinforsikringshjelp.no - Uavhengig forsikringssammenligning",
     description: "Vi sammenligner forsikringene dine og viser hvor du kan få bedre pris og bedre vilkår.",
-    images: ["/logo-forsikring.jpeg"],
   },
-  metadataBase: new URL("https://dinforsikringshjelp.no"),
+  metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   applicationName: "DinForsikringsHjelp.no",
   category: "finance",
